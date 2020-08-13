@@ -27,35 +27,7 @@ app.post("/incoming", (req, res) => {
     req.body.Body.toLowerCase().trim() != "hello" &&
     req.body.Body.toLowerCase().trim() != "test" &&
     req.body.Body.toLowerCase().trim() != "help" &&
-    req.body.Body.toLowerCase().trim() != body["country"] +
-    "  " +
-    // "(" +
-    // date +
-    // ")" +
-    "\n\n" +
-    "Cases Today : " +
-    body["todayCases"] +
-    "\n\n" +
-    "Deaths Today : " +
-    body["todayDeaths"] +
-    "\n\n" +
-    "Total Cases : " +
-    body["cases"] +
-    "\n\n" +
-    "Active Cases : " +
-    body["active"] +
-    "\n\n" +
-    "Total Deaths : " +
-    body["deaths"] +
-    "\n\n" +
-    "Total Recovered : " +
-    body["recovered"] +
-    "\n\n" +
-    "Total critical : " +
-    body["critical"] +
-    "\n\n" +
-    "Total tests : " +
-    body["tests"]
+    req.body.Body == "undefined" 
   ) {
     request(
       "https://disease.sh/v3/covid-19/countries/" + req.body.Body,
