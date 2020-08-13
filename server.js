@@ -30,7 +30,7 @@ app.post("/incoming", (req, res) => {
     req.body.Body.toLowerCase().trim() == undefined
   ) {
     request(
-      "https://coronavirus-19-api.herokuapp.com/countries/" + req.body.Body,
+      "https://disease.sh/v3/covid-19/countries/" + req.body.Body,
       function (error, response, body) {
         body = JSON.parse(body);
         console.log(body);
@@ -68,7 +68,7 @@ app.post("/incoming", (req, res) => {
             body["critical"] +
             "\n\n" +
             "Total tests : " +
-            body["totalTests"] +
+            body["tests"] +
             "\n\n" +
             "Created by Mulubwa Chungu" +
             "\n\n" +
