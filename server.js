@@ -27,7 +27,7 @@ app.post("/incoming", (req, res) => {
     req.body.Body.toLowerCase().trim() != "hello" &&
     req.body.Body.toLowerCase().trim() != "test" &&
     req.body.Body.toLowerCase().trim() != "help" &&
-    req.body.Body == "undefined" 
+    req.body.Body != body
   ) {
     request(
       "https://disease.sh/v3/covid-19/countries/" + req.body.Body,
