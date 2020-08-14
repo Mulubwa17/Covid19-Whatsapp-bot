@@ -22,16 +22,24 @@ app.use(
 app.post("/incoming", (req, res) => {
   const date = new Date().toLocaleString();
   const twiml = new MessagingResponse();
-  if (body == "" ) {
-    body = body;
-  
+  if (
+    req.body.Body.toLowerCase().trim() != "hi" &&
+    req.body.Body.toLowerCase().trim() != "hello" &&
+    req.body.Body.toLowerCase().trim() != "test" &&
+    req.body.Body.toLowerCase().trim() != "help" &&
+    req.body.Body.toLowerCase().trim() != req.body.body
+  ) {
     request(
       "https://disease.sh/v3/covid-19/countries/" + req.body.Body,
       function (error, response, body) {
         body = JSON.parse(body);
         console.log(body);
 
-       const msg = twiml.message(
+        if (body['country'] == "" ) {
+          body['country'] = body;
+        }
+
+        const msg = twiml.message(
           body["country"] +
             "  " +
             // "(" +
@@ -74,13 +82,7 @@ app.post("/incoming", (req, res) => {
         res.end(twiml.toString());
       }
     );
-  } else if (
-    req.body.Body.toLowerCase().trim() != "hi" &&
-    req.body.Body.toLowerCase().trim() != "hello" &&
-    req.body.Body.toLowerCase().trim() != "test" &&
-    req.body.Body.toLowerCase().trim() != "help" &&
-    req.body.Body.toLowerCase().trim() != req.body.body
-  ) {
+  } else {
     
     var msg = twiml.message(
       `*Hey 👋*
