@@ -22,15 +22,14 @@ app.use(
 app.post("/incoming", (req, res) => {
   const date = new Date().toLocaleString();
   const twiml = new MessagingResponse();
-  if (body == "" ) {
-    body = body;
-  
+   
     request(
       "https://disease.sh/v3/covid-19/countries/" + req.body.Body,
       function (error, response, body) {
         body = JSON.parse(body);
         console.log(body);
-
+        if (body == req.body ) {
+          body = body;
        const msg = twiml.message(
           body["country"] +
             "  " +
@@ -73,13 +72,13 @@ app.post("/incoming", (req, res) => {
         });
         res.end(twiml.toString());
       }
-    );
-  } else if (
+    
+   else if (
     req.body.Body.toLowerCase().trim() != "hi" &&
     req.body.Body.toLowerCase().trim() != "hello" &&
     req.body.Body.toLowerCase().trim() != "test" &&
     req.body.Body.toLowerCase().trim() != "help" &&
-    req.body.Body.toLowerCase().trim() != req.body.body
+    req.body.Body.toLowerCase().trim() === undefined
   ) {
     
     var msg = twiml.message(
@@ -100,7 +99,7 @@ Seems you mistyped there,` +
     res.end(twiml.toString());
   }
   console.log(req.body);
-});
+      });
 
 app.post("/check", function (req, res) {
   console.log(req.body.Body);
@@ -111,4 +110,4 @@ app.get("/", function (request, response) {
 
 app.listen(process.env.PORT, () => {
   console.log("Server is listening on Port:", process.env.PORT);
-});
+})});
