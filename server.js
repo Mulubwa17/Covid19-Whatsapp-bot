@@ -26,7 +26,36 @@ app.post("/incoming", (req, res) => {
     req.body.Body.toLowerCase().trim() != "hi" &&
     req.body.Body.toLowerCase().trim() != "hello" &&
     req.body.Body.toLowerCase().trim() != "test" &&
-    req.body.Body.toLowerCase().trim() != "help" 
+    req.body.Body.toLowerCase().trim() != "help" &&
+    req.body.Body.toLowerCase().trim() ===  body["undefined"] +
+    "  " +
+    // "(" +
+    // date +
+    // ")" +
+    "\n\n" +
+    "Cases Today : " +
+    body["undefined"] +
+    "\n\n" +
+    "Deaths Today : " +
+    body["undefined"] +
+    "\n\n" +
+    "Total Cases : " +
+    body["undefined"] +
+    "\n\n" +
+    "Active Cases : " +
+    body["undefined"] +
+    "\n\n" +
+    "Total Deaths : " +
+    body["undefined"] +
+    "\n\n" +
+    "Total Recovered : " +
+    body["undefined"] +
+    "\n\n" +
+    "Total critical : " +
+    body["undefined"] +
+    "\n\n" +
+    "Total tests : " +
+    body["undefined"] 
        
   ) {
     request(
@@ -35,7 +64,7 @@ app.post("/incoming", (req, res) => {
         body = JSON.parse(body);
         console.log(body);
 
-        if (body == "" || body != undefined) {
+        if (body == "" ) {
           body = body;
         }
 
