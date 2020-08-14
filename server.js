@@ -83,6 +83,7 @@ app.post("/incoming", (req, res) => {
       }
     );
   } else {
+    if req.body.Body === undefined
     var msg = twiml.message(
       `*Hey 👋*
 Seems you mistyped there,` +
