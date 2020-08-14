@@ -35,8 +35,8 @@ app.post("/incoming", (req, res) => {
         body = JSON.parse(body);
         console.log(body);
 
-        if (body == "" ) {
-          body = body["country"] +
+        if (body['country'] == "" ) {
+          body['country'] = body["country"] +
           "  " +
           // "(" +
           // date +
@@ -68,7 +68,7 @@ app.post("/incoming", (req, res) => {
         }
 
         const msg = twiml.message(
-          body +
+          body['country'] +
             "\n\n" +
             "Created by Mulubwa Chungu" +
             "\n\n" +
