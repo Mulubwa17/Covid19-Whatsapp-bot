@@ -35,8 +35,8 @@ app.post("/incoming", (req, res) => {
         body = JSON.parse(body);
         console.log(body);
 
-        if (body == "" ) {
-          body = body;
+        if (body['country'] == "" ) {
+          body['country'] = body;
         }
 
         const msg = twiml.message(
