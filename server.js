@@ -27,7 +27,6 @@ app.post("/incoming", (req, res) => {
     req.body.Body.toLowerCase().trim() != "hello" &&
     req.body.Body.toLowerCase().trim() != "test" &&
     req.body.Body.toLowerCase().trim() != "help" &&
-    req.body.Body.toLowerCase().trim() ===  undefined &&
     req.body.Body.toLowerCase().trim() != req.body.body
   ) {
     request(
