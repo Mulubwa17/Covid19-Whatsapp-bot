@@ -35,7 +35,7 @@ app.post("/incoming", (req, res) => {
         body = JSON.parse(body);
         console.log(body);
 
-        if (body == "" ) {
+        if (body["country"] == "" ) {
           body = body;
         }
 
