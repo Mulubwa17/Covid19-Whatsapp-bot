@@ -35,40 +35,40 @@ app.post("/incoming", (req, res) => {
         body = JSON.parse(body);
         console.log(body);
 
-        if (body['country'] == "" ) {
-          body['country'] = body["country"] +
-          "  " +
-          // "(" +
-          // date +
-          // ")" +
-          "\n\n" +
-          "Cases Today : " +
-          body["todayCases"] +
-          "\n\n" +
-          "Deaths Today : " +
-          body["todayDeaths"] +
-          "\n\n" +
-          "Total Cases : " +
-          body["cases"] +
-          "\n\n" +
-          "Active Cases : " +
-          body["active"] +
-          "\n\n" +
-          "Total Deaths : " +
-          body["deaths"] +
-          "\n\n" +
-          "Total Recovered : " +
-          body["recovered"] +
-          "\n\n" +
-          "Total critical : " +
-          body["critical"] +
-          "\n\n" +
-          "Total tests : " +
-          body["tests"];
+        if (body == "" || body == 'undefined' ) {
+          body = body;
         }
 
         const msg = twiml.message(
-          body['country'] +
+          body["country"] +
+            "  " +
+            // "(" +
+            // date +
+            // ")" +
+            "\n\n" +
+            "Cases Today : " +
+            body["todayCases"] +
+            "\n\n" +
+            "Deaths Today : " +
+            body["todayDeaths"] +
+            "\n\n" +
+            "Total Cases : " +
+            body["cases"] +
+            "\n\n" +
+            "Active Cases : " +
+            body["active"] +
+            "\n\n" +
+            "Total Deaths : " +
+            body["deaths"] +
+            "\n\n" +
+            "Total Recovered : " +
+            body["recovered"] +
+            "\n\n" +
+            "Total critical : " +
+            body["critical"] +
+            "\n\n" +
+            "Total tests : " +
+            body["tests"] +
             "\n\n" +
             "Created by Mulubwa Chungu" +
             "\n\n" +
